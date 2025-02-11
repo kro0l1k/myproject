@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block extra_css %}
+  <link rel="stylesheet" type="text/css" href="{% static 'styles/main.css' %}">
+{% endblock %}
+{% block content %}
+<h1>Welcome to Our Site</h1>
+<p>This is the home page. Here you can find the latest updates and announcements.</p>
+<div class="hero-section">
+    <div class="hero-content">
+        <h1>CYBERRUNNER CHALLENGE REMAINS UNDEFEATED.</h1>
+        <p>Train an algorithm to solve unseen mazes in 10 minutes.</p>
+        <p>$10,000+ prize pool for the grand challenge.</p>
+        <a href="{% url 'register' %}" class="signup-btn">JOIN THE CHALLENGE</a>
+    </div>
+</div>
+{% endblock %} 

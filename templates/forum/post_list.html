@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>Forum Posts</h1>
+<a href="{% url 'forum:create_post' %}">Create New Post</a>
+<ul>
+  {% for post in posts %}
+    <li>
+      <a href="{% url 'forum:post_detail' post.pk %}">{{ post.title }}</a>
+      by {{ post.author.username }} -
+      Score: {{ post.vote_score }}
+      {% if post.type == 'submission' %}
+         <strong>[Submission]</strong>
+      {% endif %}
+    </li>
+  {% empty %}
+    <li>No posts available.</li>
+  {% endfor %}
+</ul>
+{% endblock %}

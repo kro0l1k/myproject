@@ -1,0 +1,82 @@
+.tutorials-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+.hero-section {
+    text-align: center;
+    margin: 4rem 0;
+}
+
+.subtitle {
+    color: var(--secondary);
+    font-size: 1.2rem;
+    margin-top: 1rem;
+}
+
+.resources-section {
+    margin: 4rem 0;
+}
+
+.primary-resources {
+    text-align: center;
+}
+
+.resource-links {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.resource-link {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--text);
+    text-decoration: none;
+    padding: 1rem 2rem;
+    border: 1px solid var(--primary);
+    border-radius: 4px;
+    transition: all 0.2s;
+}
+
+.resource-link:hover {
+    background: rgba(255, 0, 255, 0.1);
+    transform: translateY(-2px);
+}
+
+.tutorials-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin: 4rem 0;
+}
+
+.tutorial-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 200px;
+    transition: transform 0.2s;
+}
+
+.tutorial-card:hover {
+    transform: translateY(-5px);
+}
+
+.tutorial-link {
+    color: var(--secondary);
+    text-decoration: none;
+    margin-top: 1rem;
+    display: inline-block;
+}
+
+.tutorial-link:hover {
+    text-decoration: underline;
+}
+
+.icon {
+    font-size: 1.5rem;
+} 
