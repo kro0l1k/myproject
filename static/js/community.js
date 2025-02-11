@@ -64,11 +64,29 @@ function trackPostView() {
     });
 }
 
-// Comment reply functionality
+// Comment functionality
 function showReplyForm(commentId) {
-    const replyForm = document.querySelector(`#reply-form-${commentId}`);
+    const replyForm = document.getElementById(`reply-form-${commentId}`);
     if (replyForm) {
         replyForm.style.display = replyForm.style.display === 'none' ? 'block' : 'none';
+    }
+}
+
+function enableCommentEdit(commentId) {
+    const contentDiv = document.getElementById(`comment-content-${commentId}`);
+    const editForm = document.getElementById(`edit-form-${commentId}`);
+    if (contentDiv && editForm) {
+        contentDiv.style.display = 'none';
+        editForm.style.display = 'block';
+    }
+}
+
+function cancelCommentEdit(commentId) {
+    const contentDiv = document.getElementById(`comment-content-${commentId}`);
+    const editForm = document.getElementById(`edit-form-${commentId}`);
+    if (contentDiv && editForm) {
+        contentDiv.style.display = 'block';
+        editForm.style.display = 'none';
     }
 }
 
@@ -90,27 +108,6 @@ function loadMoreComments(postId, page) {
         .catch(error => {
             console.error('Error:', error);
         });
-}
-
-// Comment editing
-function enableCommentEdit(commentId) {
-    const commentContent = document.querySelector(`#comment-content-${commentId}`);
-    const editForm = document.querySelector(`#edit-form-${commentId}`);
-    
-    if (commentContent && editForm) {
-        commentContent.style.display = 'none';
-        editForm.style.display = 'block';
-    }
-}
-
-function cancelCommentEdit(commentId) {
-    const commentContent = document.querySelector(`#comment-content-${commentId}`);
-    const editForm = document.querySelector(`#edit-form-${commentId}`);
-    
-    if (commentContent && editForm) {
-        commentContent.style.display = 'block';
-        editForm.style.display = 'none';
-    }
 }
 
 // Post preview
@@ -144,4 +141,20 @@ function debounce(func, wait) {
         clearTimeout(timeout);
         timeout = setTimeout(later, wait);
     };
+}
+
+// Helper function to get CSRF token
+function getCookie(name) {
+    let cookieValue = null;
+    if (document.cookie && document.cookie !== '') {
+        const cookies = document.cookie.split(';');
+        for (let i = 0; i < cookies.length; i++) {
+            const cookie = cookies[i].trim();
+            if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                break;
+            }
+        }
+    }
+    return cookieValue;
 } 

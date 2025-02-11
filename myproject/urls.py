@@ -22,12 +22,10 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('community/', include('community.urls')),
+    path('accounts/', include('accounts.urls')),
     # Include Django's built-in authentication URLs:
     path('accounts/', include('django.contrib.auth.urls')),
-    # Include our custom accounts app URLs:
-    path('accounts/', include('accounts.urls')),
-    # Community URLs:
-    path('community/', include('community.urls')),
     # Core app URLs (including home page):
     path('', include('core.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

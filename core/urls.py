@@ -7,6 +7,6 @@ urlpatterns = [
     # Home page
     path('', views.home, name='home'),
     # Dashboard
-    path('dashboard/', views.admin_dashboard, name='admin_dashboard'),
+    path('dashboard/', views.dashboard, name='dashboard'),
     # ... other URLs ...
 ] 
