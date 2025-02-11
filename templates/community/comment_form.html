@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/community.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="community-container">
+    <div class="form-header">
+        <h1>{% if form.instance.pk %}Edit Comment{% else %}Add Comment{% endif %}</h1>
+    </div>
+
+    <div class="comment-form-container">
+        <form method="post" class="comment-form">
+            {% csrf_token %}
+            
+            {% if form.non_field_errors %}
+            <div class="alert alert-danger">
+                {% for error in form.non_field_errors %}
+                    {{ error }}
+                {% endfor %}
+            </div>
+            {% endif %}
+
+            <div class="form-group">
+                <label for="{{ form.content.id_for_label }}">Comment</label>
+                {{ form.content }}
+                {% if form.content.errors %}
+                <div class="form-error">{{ form.content.errors }}</div>
+                {% endif %}
+            </div>
+
+            <div class="form-actions">
+                <button type="submit" class="btn btn-primary">
+                    {% if form.instance.pk %}Save Changes{% else %}Post Comment{% endif %}
+                </button>
+                <a href="{% url 'community:post_detail' post.pk %}" class="btn btn-outline-secondary">Cancel</a>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'js/community.js' %}"></script>
+{% endblock %} 

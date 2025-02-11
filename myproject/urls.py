@@ -17,6 +17,8 @@ Including another URLconf
 
 from django.contrib import admin
 from django.urls import path, include
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -24,8 +26,8 @@ urlpatterns = [
     path('accounts/', include('django.contrib.auth.urls')),
     # Include our custom accounts app URLs:
     path('accounts/', include('accounts.urls')),
-    # For simplicity, let's define a home page:
-    path('', include('accounts.urls')),  # home page will be defined in accounts.urls
-    # Include forum URLs with namespace:
-    path('forum/', include(('forum.urls', 'forum'), namespace='forum')),
-]
+    # Community URLs:
+    path('community/', include('community.urls')),
+    # Core app URLs (including home page):
+    path('', include('core.urls')),
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

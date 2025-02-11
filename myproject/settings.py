@@ -38,6 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'accounts',  # our custom app
+    'core.apps.CoreConfig',  # core app
+    'community.apps.CommunityConfig',  # community app
     'forum'
 ]
 

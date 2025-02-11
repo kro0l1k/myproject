@@ -1,0 +1,81 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/community.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="community-container">
+    <div class="categories-header">
+        <h1>Discussion Categories</h1>
+        <p class="lead">Browse our community categories to find discussions that interest you.</p>
+    </div>
+
+    <div class="categories-grid">
+        {% for category in categories %}
+        <div class="category-card">
+            <h2><a href="{% url 'community:category_detail' category.slug %}">{{ category.name }}</a></h2>
+            <p class="category-description">{{ category.description }}</p>
+            
+            <div class="category-stats">
+                <div class="stat-item">
+                    <i class="fas fa-file-alt"></i>
+                    <span>{{ category.posts.count }} posts</span>
+                </div>
+                {% with latest_post=category.posts.first %}
+                {% if latest_post %}
+                <div class="stat-item">
+                    <i class="fas fa-clock"></i>
+                    <span>Latest: {{ latest_post.created_at|timesince }} ago</span>
+                </div>
+                {% endif %}
+                {% endwith %}
+            </div>
+
+            <div class="category-preview">
+                {% with recent_posts=category.posts.all|slice:":3" %}
+                {% if recent_posts %}
+                <h3>Recent Posts</h3>
+                <ul class="recent-posts-list">
+                    {% for post in recent_posts %}
+                    <li>
+                        <a href="{% url 'community:post_detail' post.pk %}">{{ post.title }}</a>
+                        <span class="post-meta">
+                            <span class="post-author">by {{ post.author.username }}</span>
+                            <span class="post-date">{{ post.created_at|timesince }} ago</span>
+                        </span>
+                    </li>
+                    {% endfor %}
+                </ul>
+                {% endif %}
+                {% endwith %}
+            </div>
+
+            <div class="category-actions">
+                <a href="{% url 'community:category_detail' category.slug %}" class="btn btn-outline-primary">
+                    View All Posts
+                </a>
+                {% if user.is_authenticated %}
+                <a href="{% url 'community:post_create' %}?category={{ category.slug }}" class="btn btn-primary">
+                    Create Post
+                </a>
+                {% endif %}
+            </div>
+        </div>
+        {% empty %}
+        <div class="no-categories">
+            <p>No categories available yet.</p>
+            {% if user.is_staff %}
+            <p>As an admin, you can create categories through the admin interface.</p>
+            <a href="{% url 'admin:community_category_add' %}" class="btn btn-primary">Create Category</a>
+            {% endif %}
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'js/community.js' %}"></script>
+{% endblock %} 

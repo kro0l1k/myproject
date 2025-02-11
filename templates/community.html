@@ -6,9 +6,71 @@
 {% endblock %}
 
 {% block content %}
-<h1>Community</h1>
-<p>Join our community to share ideas and connect with fellow enthusiasts.</p>
+<div class="community-container">
+    <div class="community-header">
+        <h1>Community</h1>
+        <p class="lead">Join our community to share ideas and connect with fellow enthusiasts.</p>
+        {% if user.is_authenticated %}
+            <a href="{% url 'community:post_create' %}" class="btn btn-primary">Create New Post</a>
+        {% else %}
+            <a href="{% url 'accounts:login' %}?next={{ request.path }}" class="btn btn-primary">Login to Post</a>
+        {% endif %}
+    </div>
 
-<p>Community forum is yet to be created.</p>
+    <div class="community-categories">
+        <h2>Discussion Categories</h2>
+        <div class="categories-grid">
+            {% for category in categories %}
+            <div class="category-card">
+                <h3><a href="{% url 'community:category_detail' category.slug %}">{{ category.name }}</a></h3>
+                <p>{{ category.description }}</p>
+                <div class="category-stats">
+                    <span>{{ category.post_count }} posts</span>
+                    {% if category.latest_post %}
+                    <span>Latest: {{ category.latest_post.created_at|timesince }} ago</span>
+                    {% endif %}
+                </div>
+            </div>
+            {% empty %}
+            <p>No categories available yet.</p>
+            {% endfor %}
+        </div>
+    </div>
 
+    <div class="recent-activity">
+        <h2>Recent Activity</h2>
+        <div class="posts-list">
+            {% for post in recent_posts %}
+            <div class="post-card">
+                <div class="post-meta">
+                    <span class="post-category">{{ post.category.name }}</span>
+                    <span class="post-type {{ post.type }}">{{ post.get_type_display }}</span>
+                </div>
+                <h3><a href="{% url 'community:post_detail' post.pk %}">{{ post.title }}</a></h3>
+                <p class="post-excerpt">{{ post.content|truncatewords:30 }}</p>
+                <div class="post-footer">
+                    <div class="post-stats">
+                        <span><i class="fas fa-comment"></i> {{ post.comments.count }}</span>
+                        <span><i class="fas fa-eye"></i> {{ post.views_count }}</span>
+                        <span><i class="fas fa-arrow-up"></i> {{ post.vote_score }}</span>
+                    </div>
+                    <div class="post-author">
+                        <span>By {{ post.author.username }}</span>
+                        <span>{{ post.created_at|timesince }} ago</span>
+                    </div>
+                </div>
+            </div>
+            {% empty %}
+            <p>No recent posts.</p>
+            {% endfor %}
+        </div>
+        <div class="view-all">
+            <a href="{% url 'community:post_list' %}" class="btn btn-outline-primary">View All Posts</a>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'js/community.js' %}"></script>
 {% endblock %}
