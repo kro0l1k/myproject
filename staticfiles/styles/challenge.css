@@ -1,0 +1,148 @@
+.challenge-container {
+    background: rgba(47, 0, 71, 0.95);
+    border: 2px solid #ff00ff;
+    border-radius: 0;
+    padding: 2.5rem;
+    margin: 2rem 0;
+    color: white;
+    box-shadow: 0 0 20px rgba(255, 0, 255, 0.2);
+    animation: glow 4s infinite;
+}
+
+.challenge-title {
+    color: #ff00ff;
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+    text-transform: uppercase;
+    font-family: 'Courier New', monospace;
+    letter-spacing: 2px;
+    text-shadow: 2px 2px 4px rgba(255, 0, 255, 0.3);
+}
+
+.challenge-description {
+    color: #fff;
+    font-family: 'Courier New', monospace;
+    line-height: 1.8;
+    margin-bottom: 2.5rem;
+    font-size: 1.1rem;
+}
+
+.challenge-details {
+    background: rgba(0, 0, 0, 0.7);
+    border: 1px solid #00ffff;
+    padding: 2rem;
+    margin-top: 2rem;
+}
+
+.prize-pool {
+    color: #00ffff;
+    font-size: 1.8rem;
+    margin: 1.5rem 0;
+    font-weight: bold;
+    text-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
+}
+
+.deadline {
+    color: #fff;
+    font-size: 1.3rem;
+    opacity: 0.9;
+}
+
+.monthly-bounties {
+    margin-top: 4rem;
+}
+
+.bounty-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2.5rem;
+    margin-top: 2.5rem;
+}
+
+.bounty-card {
+    background: rgba(255, 255, 255, 0.95);
+    border: 1px solid #ff00ff;
+    padding: 2rem;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.bounty-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, #ff00ff, #00ffff);
+}
+
+.bounty-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 20px rgba(255, 0, 255, 0.2);
+}
+
+.bounty-month {
+    color: #2f0047;
+    font-size: 1.6rem;
+    margin-bottom: 1.5rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: bold;
+}
+
+.bounty-task {
+    color: #000000;
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+    font-family: 'Courier New', monospace;
+}
+
+.bounty-reward {
+    color: #ff00ff;
+    font-style: normal;
+    font-weight: bold;
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(255, 0, 255, 0.3);
+}
+
+.section-title {
+    color: #ff00ff;
+    font-size: 2.2rem;
+    margin: 3rem 0 2rem 0;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    text-shadow: 2px 2px 4px rgba(255, 0, 255, 0.3);
+    position: relative;
+    display: inline-block;
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, #ff00ff, #00ffff);
+}
+
+@media (max-width: 1024px) {
+    .bounty-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .bounty-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@keyframes glow {
+    0% { box-shadow: 0 0 5px rgba(255, 0, 255, 0.2); }
+    50% { box-shadow: 0 0 20px rgba(255, 0, 255, 0.4); }
+    100% { box-shadow: 0 0 5px rgba(255, 0, 255, 0.2); }
+} 

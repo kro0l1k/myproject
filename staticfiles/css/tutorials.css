@@ -1,11 +1,8 @@
 /* Move from templates/styles/tutorials.css */ 
 
 .tutorials-container {
-    max-width: 1200px;
+    width: 100%;
     margin: 0 auto;
-    padding: 2rem;
-    background-color: rgba(26, 26, 26, 0.8);
-    backdrop-filter: blur(10px);
 }
 
 .hero-section {
@@ -13,9 +10,17 @@
     margin: 4rem 0;
 }
 
+.hero-section h1 {
+    font-family: 'Courier New', monospace;
+    font-size: 3.5rem;
+    margin-bottom: 1.5rem;
+    line-height: 1.2;
+    letter-spacing: -1px;
+}
+
 .subtitle {
-    color: var(--text-secondary);
     font-size: 1.2rem;
+    color: var(--text-secondary);
     margin-top: 1rem;
 }
 
@@ -24,11 +29,23 @@
 }
 
 .primary-resources {
-    text-align: center;
     background-color: var(--bg-secondary);
+    border: 1px solid var(--neon-purple);
     padding: 2rem;
     border-radius: 10px;
-    border: 1px solid var(--accent);
+    transition: all 0.3s ease;
+}
+
+.primary-resources:hover {
+    border-color: var(--neon-pink);
+    transform: translateY(-5px);
+}
+
+.primary-resources h2 {
+    font-family: 'Courier New', monospace;
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    text-align: center;
 }
 
 .resource-links {
@@ -41,63 +58,72 @@
 .resource-link {
     display: flex;
     align-items: center;
-    gap: 0.5rem;
+    gap: 1rem;
     color: var(--text-primary);
     text-decoration: none;
     padding: 1rem 2rem;
-    border: 1px solid var(--accent);
+    border: 1px solid var(--neon-purple);
     border-radius: 4px;
-    transition: all 0.2s;
+    transition: all 0.3s ease;
     background-color: rgba(42, 42, 42, 0.5);
+    font-family: 'Courier New', monospace;
 }
 
 .resource-link:hover {
-    background: rgba(255, 255, 255, 0.1);
+    border-color: var(--neon-pink);
     transform: translateY(-2px);
+    box-shadow: 0 0 15px rgba(176, 38, 255, 0.3);
 }
 
 .tutorials-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(3, 1fr);
     gap: 2rem;
     margin: 4rem 0;
 }
 
 .tutorial-card {
     background-color: var(--bg-secondary);
-    border: 1px solid var(--accent);
+    border: 1px solid var(--neon-purple);
     padding: 2rem;
     border-radius: 10px;
-    transition: transform 0.2s;
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 .tutorial-card:hover {
+    border-color: var(--neon-pink);
     transform: translateY(-5px);
+    box-shadow: 0 0 15px rgba(176, 38, 255, 0.3);
 }
 
 .tutorial-card h3 {
-    color: var(--text-primary);
+    font-family: 'Courier New', monospace;
+    font-size: 1.3rem;
     margin-bottom: 1rem;
+    color: var(--text-primary);
 }
 
 .tutorial-card p {
     color: var(--text-secondary);
     margin-bottom: 1.5rem;
+    font-size: 1rem;
+    line-height: 1.5;
 }
 
 .tutorial-link {
-    color: var(--text-primary);
+    color: var(--neon-blue);
     text-decoration: none;
     display: inline-block;
-    padding: 0.5rem 1rem;
-    background-color: var(--accent);
-    border-radius: 4px;
+    font-family: 'Courier New', monospace;
     transition: all 0.2s;
 }
 
 .tutorial-link:hover {
-    background-color: #3a3a3a;
-    transform: translateY(-2px);
+    color: var(--neon-pink);
+    transform: translateX(5px);
 }
 
 .icon {
@@ -106,4 +132,19 @@
 
 h1, h2, h3, h4 {
     color: var(--text-primary);
+}
+
+/* Make sure video containers respect width */
+.video-container {
+    width: 100%;
+    position: relative;
+    padding-bottom: 56.25%; /* 16:9 aspect ratio */
+}
+
+.video-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
 } 

@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="dashboard-container">
+    <div class="dashboard-sidebar">
+        <h2>Admin Dashboard</h2>
+        <nav>
+            <ul>
+                <li><a href="#forum-posts" class="active">Forum Posts</a></li>
+                <li><a href="#messages">User Messages</a></li>
+                <li><a href="#reports">Reported Content</a></li>
+                <li><a href="#users">User Management</a></li>
+            </ul>
+        </nav>
+    </div>
+
+    <div class="dashboard-content">
+        <div id="forum-posts" class="dashboard-section">
+            <h3>Forum Posts</h3>
+            <div class="posts-list">
+                {% if forum_posts %}
+                    {% for post in forum_posts %}
+                        <div class="post-item">
+                            <h4>{{ post.title }}</h4>
+                            <p>{{ post.content|truncatewords:50 }}</p>
+                            <div class="post-meta">
+                                <span>Posted by: {{ post.author }}</span>
+                                <span>Date: {{ post.created_at }}</span>
+                                <div class="post-actions">
+                                    <button class="btn-edit">Edit</button>
+                                    <button class="btn-delete">Delete</button>
+                                    <button class="btn-moderate">Moderate</button>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                {% else %}
+                    <p>No forum posts available.</p>
+                {% endif %}
+            </div>
+        </div>
+
+        <div id="messages" class="dashboard-section">
+            <h3>User Messages</h3>
+            <div class="messages-list">
+                {% if user_messages %}
+                    {% for message in user_messages %}
+                        <div class="message-item">
+                            <div class="message-header">
+                                <span>From: {{ message.sender }}</span>
+                                <span>Date: {{ message.sent_at }}</span>
+                            </div>
+                            <div class="message-content">
+                                {{ message.content }}
+                            </div>
+                            <div class="message-actions">
+                                <button class="btn-reply">Reply</button>
+                                <button class="btn-archive">Archive</button>
+                                <button class="btn-delete">Delete</button>
+                            </div>
+                        </div>
+                    {% endfor %}
+                {% else %}
+                    <p>No messages available.</p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %} 

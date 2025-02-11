@@ -5,6 +5,16 @@
   --text-primary: #ffffff;
   --text-secondary: #b3b3b3;
   --accent: #2a2a2a;
+  --neon-pink: #ff00ff;
+  --neon-blue: #00ffff;
+  --neon-purple: #b026ff;
+  --content-width: 80%;
+  --maze-size: 50px;
+}
+
+/* Set default font for all text */
+* {
+  font-family: 'Courier New', monospace;
 }
 
 body {
@@ -12,9 +22,11 @@ body {
   color: var(--text-primary);
   position: relative;
   overflow-x: hidden;
+  margin: 0;
+  padding: 0;
 }
 
-/* Maze background */
+/* Improved maze background */
 .maze-background {
   position: fixed;
   top: 0;
@@ -23,13 +35,13 @@ body {
   height: 100%;
   z-index: -1;
   background: 
-    linear-gradient(to right, var(--accent) 1px, transparent 1px) 0 0,
-    linear-gradient(to bottom, var(--accent) 1px, transparent 1px) 0 0;
-  background-size: 50px 50px;
-  opacity: 0.1;
+    linear-gradient(to right, var(--accent) 2px, transparent 2px) 0 0,
+    linear-gradient(to bottom, var(--accent) 2px, transparent 2px) 0 0;
+  background-size: var(--maze-size) var(--maze-size);
+  opacity: 0.15;
 }
 
-/* Animated balls */
+/* Updated ball animation with maze collision */
 .moving-ball {
   position: fixed;
   width: 20px;
@@ -40,18 +52,34 @@ body {
   z-index: -1;
 }
 
-@keyframes moveBall {
+@keyframes moveBallInMaze1 {
   0% { transform: translate(0, 0); }
-  25% { transform: translate(100px, 100px); }
-  50% { transform: translate(200px, 0); }
-  75% { transform: translate(100px, -100px); }
+  25% { transform: translate(var(--maze-size), var(--maze-size)); }
+  50% { transform: translate(0, var(--maze-size)); }
+  75% { transform: translate(var(--maze-size), 0); }
   100% { transform: translate(0, 0); }
 }
 
-.ball-1 { animation: moveBall 20s infinite linear; }
-.ball-2 { animation: moveBall 25s infinite linear reverse; }
-.ball-3 { animation: moveBall 30s infinite linear; }
-.ball-4 { animation: moveBall 35s infinite linear reverse; }
+@keyframes moveBallInMaze2 {
+  0% { transform: translate(var(--maze-size), 0); }
+  25% { transform: translate(0, var(--maze-size)); }
+  50% { transform: translate(var(--maze-size), var(--maze-size)); }
+  75% { transform: translate(0, 0); }
+  100% { transform: translate(var(--maze-size), 0); }
+}
+
+.ball-1 { animation: moveBallInMaze1 8s infinite linear; }
+.ball-2 { animation: moveBallInMaze2 12s infinite linear reverse; }
+.ball-3 { animation: moveBallInMaze1 10s infinite linear; }
+.ball-4 { animation: moveBallInMaze2 15s infinite linear reverse; }
+
+/* Content width constraint */
+.content-container {
+  width: var(--content-width);
+  margin: 0 auto;
+  max-width: 1400px;
+  padding: 2rem 0;
+}
 
 /* Common container styles */
 .container {
@@ -61,39 +89,75 @@ body {
   padding: 20px;
   margin: 20px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border: 1px solid var(--neon-purple);
+  transition: all 0.3s ease;
+}
+
+.container:hover {
+  border-color: var(--neon-pink);
 }
 
 /* Common button styles */
 .btn {
-  background-color: var(--accent);
+  background: linear-gradient(45deg, var(--neon-purple), var(--neon-pink));
   color: var(--text-primary);
   border: none;
   padding: 10px 20px;
   border-radius: 5px;
   cursor: pointer;
   transition: all 0.3s ease;
+  text-decoration: none;
 }
 
 .btn:hover {
-  background-color: #3a3a3a;
   transform: translateY(-2px);
+  box-shadow: 0 0 15px rgba(176, 38, 255, 0.5);
 }
 
 /* Navigation styles */
 nav {
-  background-color: rgba(26, 26, 26, 0.8);
-  padding: 1rem;
+  width: 100%;
+  background-color: rgba(26, 26, 26, 0.95);
   backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--neon-purple);
+  padding: 1.5rem 0;
 }
 
-nav a {
+.nav-logo {
+  font-family: 'Courier New', monospace;
+  font-size: 1.5rem;
   color: var(--text-primary);
   text-decoration: none;
-  margin: 0 10px;
+  letter-spacing: 1px;
 }
 
-nav a:hover {
-  color: var(--text-secondary);
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.nav-links a {
+  font-family: 'Courier New', monospace;
+  color: var(--text-primary);
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.nav-links a:hover {
+  color: var(--neon-pink);
+}
+
+/* Add these to your existing nav styles */
+nav .content-container {
+  padding: 0;
+}
+
+.nav-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
 }
 
 /* ... rest of the common.css content ... */ 
