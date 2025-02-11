@@ -264,4 +264,139 @@
 .vote-score {
     font-weight: bold;
     color: #2c3e50;
+}
+
+.comments-section {
+    margin-top: 2rem;
+    padding-top: 2rem;
+    border-top: 1px solid #e0e0e0;
+}
+
+.comments-section h2 {
+    margin-bottom: 1.5rem;
+    font-size: 1.5rem;
+    color: #333;
+}
+
+.comment-form {
+    margin-bottom: 2rem;
+}
+
+.comment-form textarea {
+    width: 100%;
+    min-height: 100px;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    resize: vertical;
+}
+
+.comments-container {
+    margin-top: 2rem;
+}
+
+.comment {
+    padding: 1rem;
+    margin-bottom: 1rem;
+    background-color: #f8f9fa;
+    border-radius: 4px;
+    border: 1px solid #e9ecef;
+}
+
+.comment.reply {
+    margin-left: 2rem;
+    background-color: #fff;
+}
+
+.comment-content {
+    margin-bottom: 0.5rem;
+    line-height: 1.5;
+}
+
+.comment-meta {
+    font-size: 0.875rem;
+    color: #6c757d;
+    margin-bottom: 0.5rem;
+}
+
+.comment-author {
+    font-weight: 600;
+    color: #495057;
+}
+
+.comment-date {
+    margin-left: 0.5rem;
+}
+
+.comment-edited {
+    font-style: italic;
+    margin-left: 0.5rem;
+}
+
+.comment-actions {
+    margin-top: 0.5rem;
+}
+
+.comment-actions button,
+.comment-actions a {
+    padding: 0;
+    margin-right: 1rem;
+    font-size: 0.875rem;
+    color: #6c757d;
+    text-decoration: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.comment-actions button:hover,
+.comment-actions a:hover {
+    color: #0d6efd;
+    text-decoration: none;
+}
+
+.comment-edit-form,
+.reply-form {
+    margin-top: 1rem;
+}
+
+.comment-edit-form textarea,
+.reply-form textarea {
+    width: 100%;
+    min-height: 80px;
+    padding: 0.5rem;
+    margin-bottom: 0.5rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    resize: vertical;
+}
+
+.form-actions {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.login-prompt {
+    text-align: center;
+    padding: 1rem;
+    background-color: #f8f9fa;
+    border-radius: 4px;
+    margin-bottom: 2rem;
+}
+
+.login-prompt a {
+    color: #0d6efd;
+    text-decoration: none;
+}
+
+.login-prompt a:hover {
+    text-decoration: underline;
+}
+
+.no-comments {
+    text-align: center;
+    color: #6c757d;
+    font-style: italic;
+    padding: 2rem 0;
 } 

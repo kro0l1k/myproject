@@ -37,11 +37,13 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'accounts',  # our custom app
-    'core.apps.CoreConfig',  # core app
-    'community.apps.CommunityConfig',  # community app
-    'forum',
-
+    'accounts',
+    'core',
+    'community',
+    # Third-party apps
+    'crispy_forms',
+    'crispy_bootstrap5',
+    # auth
     'allauth',
     'allauth.account',
     'allauth.socialaccount',

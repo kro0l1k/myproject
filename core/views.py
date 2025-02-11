@@ -1,6 +1,6 @@
 from django.contrib.admin.views.decorators import staff_member_required
 from django.shortcuts import render
-from .models import ForumPost, UserMessage
+from .models import UserMessage
 from django.contrib.auth.decorators import login_required
 from community.models import Post, Category
 from django.urls import reverse
@@ -26,26 +26,13 @@ def home(request):
     return render(request, 'core/home.html', context)
 
 @login_required
-def admin_dashboard(request):
-    """
-    Admin dashboard view for site management.
-    """
-    if not request.user.is_staff:
-        return reverse('core:home')
-        
-    try:
-        forum_posts = ForumPost.objects.all().order_by('-created_at')
-    except:
-        forum_posts = []
-        
-    try:
-        user_messages = UserMessage.objects.all().order_by('-sent_at')
-    except:
-        user_messages = []
+def dashboard(request):
+    """Display user's dashboard with their posts and messages."""
+    posts = Post.objects.filter(author=request.user).order_by('-created_at')
+    messages = UserMessage.objects.filter(recipient=request.user).order_by('-created_at')
     
     context = {
-        'forum_posts': forum_posts,
-        'user_messages': user_messages,
-        'page_title': 'Admin Dashboard',
+        'forum_posts': posts,
+        'user_messages': messages,
     }
     return render(request, 'dashboard.html', context) 

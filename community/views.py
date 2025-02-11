@@ -52,6 +52,9 @@ class PostDetailView(FormMixin, DetailView):
     template_name = 'community/post_detail.html'
     form_class = CommentForm
     
+    def get_success_url(self):
+        return reverse('community:post_detail', kwargs={'pk': self.object.pk})
+    
     def get(self, request, *args, **kwargs):
         response = super().get(request, *args, **kwargs)
         if not request.session.get(f'post_viewed_{self.object.pk}'):
@@ -62,9 +65,26 @@ class PostDetailView(FormMixin, DetailView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['comments'] = self.object.comments.select_related('author').filter(parent=None)
+        context['comment_form'] = self.get_form()
         if self.request.user.is_authenticated:
             context['user_vote'] = self.object.votes.filter(user=self.request.user).first()
         return context
+    
+    def post(self, request, *args, **kwargs):
+        if not request.user.is_authenticated:
+            return redirect('login')
+        self.object = self.get_object()
+        form = self.get_form()
+        if form.is_valid():
+            return self.form_valid(form)
+        return self.form_invalid(form)
+    
+    def form_valid(self, form):
+        comment = form.save(commit=False)
+        comment.post = self.object
+        comment.author = self.request.user
+        comment.save()
+        return super().form_valid(form)
 
 class PostCreateView(LoginRequiredMixin, CreateView):
     """Create a new post."""

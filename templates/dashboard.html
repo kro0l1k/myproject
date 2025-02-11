@@ -7,7 +7,7 @@
         <h2>Admin Dashboard</h2>
         <nav>
             <ul>
-                <li><a href="#forum-posts" class="active">Forum Posts</a></li>
+                <li><a href="#community-posts" class="active">Community Posts</a></li>
                 <li><a href="#messages">User Messages</a></li>
                 <li><a href="#reports">Reported Content</a></li>
                 <li><a href="#users">User Management</a></li>
@@ -16,13 +16,13 @@
     </div>
 
     <div class="dashboard-content">
-        <div id="forum-posts" class="dashboard-section">
-            <h3>Forum Posts</h3>
+        <div id="community-posts" class="dashboard-section">
+            <h3>Community Posts</h3>
             <div class="posts-list">
                 {% if forum_posts %}
                     {% for post in forum_posts %}
                         <div class="post-item">
-                            <h4>{{ post.title }}</h4>
+                            <h4><a href="{% url 'community:post_detail' post.pk %}">{{ post.title }}</a></h4>
                             <p>{{ post.content|truncatewords:50 }}</p>
                             <div class="post-meta">
                                 <span>Posted by: {{ post.author }}</span>
