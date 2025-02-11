@@ -1,137 +1,165 @@
 /* Move from templates/styles/tutorials.css */ 
 
 .tutorials-container {
-    width: 100%;
+    max-width: 1200px;
     margin: 0 auto;
+    padding: 2rem;
 }
 
 .hero-section {
     text-align: center;
     margin: 4rem 0;
+    animation: fadeIn 1s ease-out;
 }
 
 .hero-section h1 {
-    font-family: 'Courier New', monospace;
-    font-size: 3.5rem;
-    margin-bottom: 1.5rem;
-    line-height: 1.2;
-    letter-spacing: -1px;
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    background: linear-gradient(45deg, var(--primary), var(--secondary));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 0 1px rgba(76, 189, 224, 0.2);
 }
 
 .subtitle {
-    font-size: 1.2rem;
     color: var(--text-secondary);
+    font-size: 1.2rem;
     margin-top: 1rem;
 }
 
 .resources-section {
     margin: 4rem 0;
+    text-align: center;
 }
 
 .primary-resources {
-    background-color: var(--bg-secondary);
-    border: 1px solid var(--neon-purple);
+    background: var(--gradient-primary);
+    border: 1px solid var(--secondary);
+    border-radius: 12px;
     padding: 2rem;
-    border-radius: 10px;
-    transition: all 0.3s ease;
-}
-
-.primary-resources:hover {
-    border-color: var(--neon-pink);
-    transform: translateY(-5px);
 }
 
 .primary-resources h2 {
-    font-family: 'Courier New', monospace;
-    font-size: 2rem;
+    color: var(--primary);
     margin-bottom: 2rem;
-    text-align: center;
+    font-size: 2rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
 }
 
 .resource-links {
     display: flex;
     justify-content: center;
     gap: 2rem;
-    margin-top: 2rem;
+    flex-wrap: wrap;
 }
 
 .resource-link {
     display: flex;
     align-items: center;
     gap: 1rem;
+    padding: 1rem 2rem;
+    background: var(--bg-secondary);
+    border: 1px solid var(--secondary);
+    border-radius: 8px;
     color: var(--text-primary);
     text-decoration: none;
-    padding: 1rem 2rem;
-    border: 1px solid var(--neon-purple);
-    border-radius: 4px;
     transition: all 0.3s ease;
-    background-color: rgba(42, 42, 42, 0.5);
-    font-family: 'Courier New', monospace;
 }
 
 .resource-link:hover {
-    border-color: var(--neon-pink);
-    transform: translateY(-2px);
-    box-shadow: 0 0 15px rgba(176, 38, 255, 0.3);
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(76, 201, 240, 0.2);
+    border-color: var(--primary);
+}
+
+.resource-link span:first-child {
+    font-size: 1.5rem;
 }
 
 .tutorials-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 2rem;
     margin: 4rem 0;
 }
 
 .tutorial-card {
-    background-color: var(--bg-secondary);
-    border: 1px solid var(--neon-purple);
-    padding: 2rem;
-    border-radius: 10px;
-    transition: all 0.3s ease;
+    background: var(--gradient-primary);
+    border: 1px solid var(--secondary);
+    border-radius: 12px;
+    padding: 1.5rem;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    transition: all 0.3s ease;
 }
 
 .tutorial-card:hover {
-    border-color: var(--neon-pink);
     transform: translateY(-5px);
-    box-shadow: 0 0 15px rgba(176, 38, 255, 0.3);
+    box-shadow: 0 8px 16px rgba(76, 201, 240, 0.2);
 }
 
 .tutorial-card h3 {
-    font-family: 'Courier New', monospace;
-    font-size: 1.3rem;
+    color: var(--primary);
     margin-bottom: 1rem;
-    color: var(--text-primary);
+    font-size: 1.4rem;
+    text-transform: uppercase;
 }
 
 .tutorial-card p {
     color: var(--text-secondary);
     margin-bottom: 1.5rem;
-    font-size: 1rem;
-    line-height: 1.5;
+    line-height: 1.6;
 }
 
 .tutorial-link {
-    color: var(--neon-blue);
+    color: var(--primary);
     text-decoration: none;
-    display: inline-block;
-    font-family: 'Courier New', monospace;
-    transition: all 0.2s;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
 }
 
 .tutorial-link:hover {
-    color: var(--neon-pink);
     transform: translateX(5px);
+    text-shadow: 0 0 10px rgba(76, 201, 240, 0.5);
 }
 
-.icon {
-    font-size: 1.5rem;
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
-h1, h2, h3, h4 {
-    color: var(--text-primary);
+@media (max-width: 768px) {
+    .tutorials-container {
+        padding: 1rem;
+    }
+
+    .hero-section h1 {
+        font-size: 2rem;
+    }
+
+    .resource-links {
+        flex-direction: column;
+    }
+
+    .resource-link {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .tutorials-grid {
+        grid-template-columns: 1fr;
+    }
 }
 
 /* Make sure video containers respect width */

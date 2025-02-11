@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import login
+from django.contrib.auth.decorators import login_required
 
 def home(request):
     # Home page (index) now uses index.html
@@ -29,3 +30,9 @@ def register(request):
     else:
         form = UserCreationForm()
     return render(request, 'accounts/register.html', {'form': form})
+
+@login_required
+def profile(request):
+    return render(request, 'accounts/profile.html', {
+        'user': request.user
+    })

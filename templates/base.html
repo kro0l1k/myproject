@@ -3,11 +3,17 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>CyberRunner Challenge</title>
-  <link rel="stylesheet" href="{% static 'css/common.css' %}">
-  <link rel="stylesheet" href="{% static 'styles/challenge.css' %}">
-  {% block extra_css %}
-  {% endblock %}
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% block title %}CyberRunner{% endblock %}</title>
+  
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&display=swap" rel="stylesheet">
+  
+  <!-- Base Styles -->
+  <link rel="stylesheet" href="{% static 'css/base.css' %}">
+  
+  <!-- Page-specific styles -->
+  {% block extra_css %}{% endblock %}
 </head>
 <body>
   <div class="maze-background"></div>
@@ -15,32 +21,64 @@
   <div class="moving-ball ball-2"></div>
   <div class="moving-ball ball-3"></div>
   <div class="moving-ball ball-4"></div>
-  <nav>
-    <div class="content-container">
-      <div class="nav-wrapper">
-        <a href="{% url 'home' %}" class="nav-logo">CYBER RUNNER</a>
-        <div class="nav-links">
-          <a href="{% url 'home' %}">Home</a>
-          <a href="{% url 'challenge' %}">Challenge</a>
-          <a href="{% url 'tutorials' %}">Tutorials</a>
-          <a href="{% url 'community' %}">Community</a>
-          {% if user.is_authenticated %}
-            Hello, {{ user.username }}!
-            <form action="{% url 'logout' %}" method="post" style="display:inline;">
-              {% csrf_token %}
-              <button type="submit" class="btn">Logout</button>
-            </form>
-          {% else %}
-            <a href="{% url 'login' %}">Login</a>
-            <a href="{% url 'register' %}" class="header-sign-up">2025 SIGN UP</a>
-          {% endif %}
-        </div>
+  <nav class="main-nav">
+    <div class="nav-container">
+      <a href="{% url 'core:home' %}" class="nav-logo">
+        <span class="logo-emoji">🦾</span>
+        CYBER RUNNER
+      </a>
+      
+      <div class="nav-links">
+        <a href="{% url 'core:tutorials' %}" class="nav-link">Tutorials</a>
+        <a href="{% url 'core:challenges' %}" class="nav-link">Challenge</a>
+        <a href="https://github.com/thomasbi1/cyberrunner" target="_blank" class="nav-link">GitHub</a>
+        <a href="https://cyberrunner.readthedocs.io/" target="_blank" class="nav-link">Docs</a>
+        {% if user.is_authenticated %}
+          <a href="{% url 'profile' %}" class="nav-link sign-up">My Account</a>
+        {% else %}
+          <a href="{% url 'register' %}" class="nav-link sign-up">2025 SIGN UP</a>
+        {% endif %}
       </div>
     </div>
   </nav>
-  <main class="content-container">
-    {% block content %}
-    {% endblock %}
+  <main class="main-content">
+    {% if messages %}
+    <div class="messages">
+      {% for message in messages %}
+      <div class="alert alert-{{ message.tags }}">
+        {{ message }}
+      </div>
+      {% endfor %}
+    </div>
+    {% endif %}
+
+    {% block content %}{% endblock %}
   </main>
+
+  <!-- Footer -->
+  <footer class="main-footer">
+    <div class="footer-container">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h3>About CyberRunner</h3>
+          <p>An autonomous system that learns to master the classic labyrinth game through advanced reinforcement learning.</p>
+        </div>
+        <div class="footer-section">
+          <h3>Resources</h3>
+          <a href="https://github.com/thomasbi1/cyberrunner" target="_blank">GitHub Repository</a>
+          <a href="https://cyberrunner.readthedocs.io/" target="_blank">Documentation</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2024 CyberRunner. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Maze Background -->
+  <script src="{% static 'js/maze.js' %}"></script>
+  
+  <!-- Additional Scripts -->
+  {% block extra_js %}{% endblock %}
 </body>
 </html>

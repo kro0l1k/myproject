@@ -3,10 +3,6 @@ from django.shortcuts import render
 from .models import UserMessage
 from django.contrib.auth.decorators import login_required
 from community.models import Post, Category
-from django.urls import reverse
-from django.urls import reverse_lazy
-from django.urls import reverse
-from django.urls import reverse_lazy
 
 def home(request):
     """
@@ -21,7 +17,7 @@ def home(request):
     context = {
         'recent_posts': recent_posts,
         'categories': categories,
-        'page_title': 'Welcome to Our Community',
+        'page_title': 'Welcome to CyberRunner',
     }
     return render(request, 'core/home.html', context)
 
@@ -35,4 +31,12 @@ def dashboard(request):
         'forum_posts': posts,
         'user_messages': messages,
     }
-    return render(request, 'dashboard.html', context) 
+    return render(request, 'dashboard.html', context)
+
+def tutorials(request):
+    """Display tutorials page."""
+    return render(request, 'tutorials.html')
+
+def challenges(request):
+    """Display challenges page."""
+    return render(request, 'challenge.html') 

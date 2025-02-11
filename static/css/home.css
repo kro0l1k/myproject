@@ -287,24 +287,39 @@
 }
 
 .hero-section {
-    margin: 4rem 0;
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
+    text-align: center;
+    padding-top: 8rem;  /* Account for fixed header */
+    padding-bottom: 4rem;
+    max-width: 1400px;
+    margin: 0 auto;
 }
 
 .hero-title {
     font-size: 3.5rem;
-    font-family: 'Courier New', monospace;
-    margin-bottom: 1.5rem;
-    line-height: 1.2;
-    letter-spacing: -1px;
+    font-weight: 700;
+    margin-bottom: 2rem;
+    background: linear-gradient(45deg, var(--neon-pink), var(--neon-blue));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 0 15px rgba(255, 0, 255, 0.3);
+}
+
+.hero-info {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
 }
 
 .hero-subtitle {
-    font-size: 1.2rem;
+    font-size: 1.5rem;
     color: var(--text-secondary);
-    margin-bottom: 2rem;
+    margin-bottom: 1rem;
+}
+
+.hero-prize {
+    font-size: 1.25rem;
+    color: var(--neon-purple);
+    font-weight: 700;
 }
 
 .prize-amount {

@@ -6,101 +6,31 @@
 {% endblock %}
 
 {% block content %}
-<div class="home-container">
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="hero-content">
-            <h1>{{ page_title }}</h1>
-            <p class="lead">Join our vibrant community of enthusiasts, share ideas, and connect with like-minded people.</p>
-            {% if not user.is_authenticated %}
-                <div class="cta-buttons">
-                    <a href="{% url 'login' %}" class="btn btn-primary">Sign In</a>
-                    <a href="{% url 'accounts:register' %}" class="btn btn-outline-primary">Register</a>
-                </div>
-            {% endif %}
-        </div>
-    </section>
+<div class="hero-section">
+    <h1 class="hero-title">CYBERRUNNER CHALLENGE REMAINS UNDEFEATED.</h1>
+    
+    <div class="hero-info">
+        <p class="hero-subtitle">Train an algorithm to solve unseen mazes in 10 minutes.</p>
+        <p class="hero-prize">$10,000+ prize pool for the grand challenge.</p>
+    </div>
+</div>
 
-    <!-- Features Section -->
-    <section class="features">
-        <div class="features-grid">
-            <div class="feature-card">
-                <i class="fas fa-comments"></i>
-                <h3>Community Discussions</h3>
-                <p>Engage in meaningful conversations with community members.</p>
-                <a href="{% url 'community:category_list' %}" class="btn btn-link">Browse Forums</a>
-            </div>
-            <div class="feature-card">
-                <i class="fas fa-users"></i>
-                <h3>Connect with Others</h3>
-                <p>Meet and collaborate with people who share your interests.</p>
-                <a href="{% url 'community:post_list' %}" class="btn btn-link">View Posts</a>
-            </div>
-            <div class="feature-card">
-                <i class="fas fa-lightbulb"></i>
-                <h3>Share Ideas</h3>
-                <p>Share your knowledge and learn from others in the community.</p>
-                {% if user.is_authenticated %}
-                    <a href="{% url 'community:post_create' %}" class="btn btn-link">Create Post</a>
-                {% else %}
-                    <a href="{% url 'login' %}?next={% url 'community:post_create' %}" class="btn btn-link">Sign in to Post</a>
-                {% endif %}
-            </div>
-        </div>
-    </section>
+<div class="challenge-boxes">
+    <div class="challenge-box">
+        <h2>GRAND CHALLENGE</h2>
+        <p>Solve unseen mazes in 10 minutes</p>
+        <p class="deadline">Deadline: June 2025</p>
+    </div>
+    
+    <div class="challenge-box">
+        <h2>BOUNTIES</h2>
+        <p>Complete smaller challenges</p>
+        <p class="reward">Win hardware time and prizes</p>
+    </div>
+</div>
 
-    <!-- Recent Activity -->
-    <section class="recent-activity">
-        <h2>Recent Community Activity</h2>
-        <div class="posts-grid">
-            {% for post in recent_posts %}
-                <div class="post-card">
-                    <div class="post-meta">
-                        <span class="post-category">{{ post.category.name }}</span>
-                        <span class="post-type {{ post.type }}">{{ post.get_type_display }}</span>
-                    </div>
-                    <h3><a href="{% url 'community:post_detail' post.pk %}">{{ post.title }}</a></h3>
-                    <p class="post-excerpt">{{ post.content|truncatewords:30 }}</p>
-                    <div class="post-footer">
-                        <div class="post-info">
-                            <span>By {{ post.author.username }}</span>
-                            <span>{{ post.created_at|timesince }} ago</span>
-                        </div>
-                        <div class="post-stats">
-                            <span><i class="fas fa-comment"></i> {{ post.comments.count }}</span>
-                            <span><i class="fas fa-eye"></i> {{ post.views_count }}</span>
-                        </div>
-                    </div>
-                </div>
-            {% empty %}
-                <p>No recent activity to display.</p>
-            {% endfor %}
-        </div>
-        <div class="view-all">
-            <a href="{% url 'community:post_list' %}" class="btn btn-outline-primary">View All Posts</a>
-        </div>
-    </section>
-
-    <!-- Categories Section -->
-    <section class="categories">
-        <h2>Popular Categories</h2>
-        <div class="categories-grid">
-            {% for category in categories %}
-                <div class="category-card">
-                    <h3><a href="{% url 'community:category_detail' category.slug %}">{{ category.name }}</a></h3>
-                    <p>{{ category.description|truncatewords:20 }}</p>
-                    <div class="category-stats">
-                        <span>{{ category.posts.count }} posts</span>
-                    </div>
-                </div>
-            {% empty %}
-                <p>No categories available.</p>
-            {% endfor %}
-        </div>
-        <div class="view-all">
-            <a href="{% url 'community:category_list' %}" class="btn btn-outline-primary">View All Categories</a>
-        </div>
-    </section>
+<div class="cta-section">
+    <a href="{% url 'register' %}" class="challenge-button">JOIN THE CHALLENGE</a>
 </div>
 {% endblock %}
 

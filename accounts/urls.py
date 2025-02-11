@@ -10,4 +10,5 @@ urlpatterns = [
     path('challenge/', views.challenge, name='challenge'),
     path('community/', views.community, name='community'),
     path('signup/', views.register, name='signup'),  # Alias for registration
+    path('profile/', views.profile, name='profile'),  # New profile URL
 ]

@@ -1,1 +1,166 @@
 /* Move from templates/styles/challenge.css */ 
+
+.challenge-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+.hero-section {
+    text-align: center;
+    margin: 4rem 0;
+    animation: fadeIn 1s ease-out;
+}
+
+.hero-section h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    background: linear-gradient(45deg, var(--primary), var(--secondary));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 0 1px rgba(76, 189, 224, 0.2);
+}
+
+.subtitle {
+    color: var(--text-secondary);
+    font-size: 1.2rem;
+    margin-top: 1rem;
+}
+
+.video-section {
+    margin: 4rem 0;
+    background: var(--gradient-primary);
+    border-radius: 12px;
+    padding: 2rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.video-container {
+    position: relative;
+    padding-bottom: 56.25%;
+    height: 0;
+    overflow: hidden;
+    border-radius: 8px;
+    border: 1px solid var(--secondary);
+}
+
+.video-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.about-section {
+    margin: 4rem 0;
+    padding: 2rem;
+    background: var(--gradient-primary);
+    border-radius: 12px;
+    border: 1px solid var(--secondary);
+}
+
+.text-content {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.text-content h2 {
+    color: var(--primary);
+    margin-bottom: 1.5rem;
+    font-size: 2rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.text-content p {
+    color: var(--text-secondary);
+    line-height: 1.8;
+    margin-bottom: 1.5rem;
+}
+
+.challenge-details {
+    margin-top: 4rem;
+}
+
+.challenge-details .card {
+    background: var(--gradient-primary);
+    border: 1px solid var(--secondary);
+    padding: 2rem;
+    margin-bottom: 2rem;
+    border-radius: 12px;
+    text-align: center;
+}
+
+.challenge-details h3 {
+    color: var(--primary);
+    margin-bottom: 1.5rem;
+    font-size: 1.8rem;
+    text-transform: uppercase;
+}
+
+.bounties-grid {
+    margin-top: 3rem;
+}
+
+.bounty-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.bounty-cards .card {
+    background: var(--gradient-primary);
+    border: 1px solid var(--secondary);
+    padding: 1.5rem;
+    text-align: left;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.bounty-cards .card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(76, 201, 240, 0.2);
+}
+
+.bounty-cards h4 {
+    color: var(--primary);
+    margin-bottom: 1rem;
+    font-size: 1.4rem;
+}
+
+.bounty-cards p {
+    color: var(--text-secondary);
+    margin-bottom: 0.5rem;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (max-width: 768px) {
+    .challenge-container {
+        padding: 1rem;
+    }
+
+    .hero-section h1 {
+        font-size: 2rem;
+    }
+
+    .bounty-cards {
+        grid-template-columns: 1fr;
+    }
+
+    .video-section,
+    .about-section {
+        margin: 2rem 0;
+        padding: 1rem;
+    }
+} 

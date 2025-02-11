@@ -1,10 +1,144 @@
 {% extends 'base.html' %}
+{% load static %}
+
+{% block extra_css %}
+<style>
+    .login-container {
+        max-width: 500px;
+        margin: 4rem auto;
+        padding: 2rem;
+        background: var(--gradient-primary);
+        border: 1px solid var(--secondary);
+        border-radius: 12px;
+    }
+
+    .login-header {
+        text-align: center;
+        margin-bottom: 2rem;
+    }
+
+    .login-header h2 {
+        font-size: 2.5rem;
+        background: linear-gradient(45deg, var(--primary), var(--secondary));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        text-shadow: 0 0 1px rgba(76, 189, 224, 0.2);
+    }
+
+    .login-form {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+
+    .form-group {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .form-group label {
+        color: var(--primary);
+        font-weight: 500;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+    }
+
+    .form-group input {
+        padding: 0.8rem;
+        background: var(--bg-secondary);
+        border: 1px solid var(--secondary);
+        border-radius: 6px;
+        color: var(--text-primary);
+        font-family: 'Courier Prime', monospace;
+    }
+
+    .form-group input:focus {
+        outline: none;
+        border-color: var(--primary);
+        box-shadow: 0 0 10px rgba(76, 201, 240, 0.3);
+    }
+
+    .login-button {
+        background: #2a2a2a;
+        color: var(--text-primary);
+        border: none;
+        padding: 1.2rem;
+        border-radius: 6px;
+        font-weight: bold;
+        font-size: 1.1rem;
+        text-transform: uppercase;
+        cursor: pointer;
+        margin-top: 1rem;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    }
+
+    .login-button:hover {
+        background: #363636;
+        box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
+    }
+
+    .register-link {
+        text-align: center;
+        margin-top: 1.5rem;
+        color: var(--text-secondary);
+    }
+
+    .register-link a {
+        color: var(--primary);
+        text-decoration: none;
+        font-weight: 500;
+        margin-left: 0.5rem;
+    }
+
+    .register-link a:hover {
+        text-decoration: underline;
+    }
+
+    .forgot-password {
+        text-align: center;
+        margin-top: 1rem;
+    }
+
+    .forgot-password a {
+        color: var(--text-secondary);
+        text-decoration: none;
+        font-size: 0.9rem;
+        transition: color 0.3s ease;
+    }
+
+    .forgot-password a:hover {
+        color: var(--primary);
+    }
+</style>
+{% endblock %}
+
 {% block content %}
-<h2>Login</h2>
-<form method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Login</button>
-    <input type="hidden" name="next" value="{{ next }}">
-</form>
+<div class="login-container">
+    <div class="login-header">
+        <h2>Welcome Back</h2>
+    </div>
+    <form method="post" class="login-form">
+        {% csrf_token %}
+        {% for field in form %}
+        <div class="form-group">
+            {{ field.label_tag }}
+            {{ field }}
+            {% if field.errors %}
+            <div class="error-message">
+                {{ field.errors }}
+            </div>
+            {% endif %}
+        </div>
+        {% endfor %}
+        <button type="submit" class="login-button">Login</button>
+        <input type="hidden" name="next" value="{{ next }}">
+    </form>
+    <div class="register-link">
+        New to CyberRunner?<a href="{% url 'register' %}">Sign up</a>
+    </div>
+    <div class="forgot-password">
+        <a href="{% url 'password_reset' %}">Forgot your password?</a>
+    </div>
+</div>
 {% endblock %}
