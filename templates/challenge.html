@@ -1,8 +1,10 @@
 {% extends 'base.html' %}
-{% block extra_css %}
 {% load static %}
-  <link rel="stylesheet" type="text/css" href="{% static 'styles/challenge.css' %}">
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/challenge.css' %}">
 {% endblock %}
+
 {% block content %}
 <main>
     <div class="challenge-container">

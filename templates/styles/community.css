@@ -15,4 +15,25 @@
 .community-content p {
     font-size: 1.2rem;
     color: var(--text);
+}
+
+.community-container {
+  background-color: rgba(26, 26, 26, 0.8);
+  backdrop-filter: blur(10px);
+}
+
+.post-card {
+  background-color: var(--bg-secondary);
+  border: 1px solid var(--accent);
+  margin-bottom: 20px;
+  padding: 15px;
+  border-radius: 8px;
+}
+
+.post-title {
+  color: var(--text-primary);
+}
+
+.post-content {
+  color: var(--text-secondary);
 } 

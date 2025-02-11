@@ -1,72 +1,81 @@
 {% extends 'base.html' %}
-{% block extra_css %}
 {% load static %}
-  <link rel="stylesheet" type="text/css" href="{% static 'styles/tutorials.css' %}">
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/tutorials.css' %}">
 {% endblock %}
+
 {% block content %}
-<h1>Tutorials</h1>
-<p>Explore our tutorials to help you get started with our platform.</p>
+<div class="tutorials-container">
+    <section class="hero-section">
+        <h1>BUILD YOUR CYBERRUNNER</h1>
+        <p class="subtitle">Complete step-by-step guide to building and training your robot</p>
+    </section>
 
-<main>
-    <div class="tutorials-container">
-        <section class="hero-section">
-            <h1>BUILD YOUR CYBERRUNNER</h1>
-            <p class="subtitle">Complete step-by-step guide to building and training your robot</p>
-        </section>
-
-        <section class="resources-section">
-            <div class="card primary-resources">
-                <h2>MAIN RESOURCES</h2>
-                <div class="resource-links">
-                    <a href="https://github.com/thomasbi1/cyberrunner" target="_blank" class="resource-link">
-                        <span class="icon">📦</span>
-                        <span>GitHub Repository</span>
-                    </a>
-                    <a href="https://cyberrunner.readthedocs.io/en/latest/" target="_blank" class="resource-link">
-                        <span class="icon">📚</span>
-                        <span>Documentation</span>
-                    </a>
-                </div>
+    <section class="resources-section">
+        <div class="primary-resources">
+            <h2>MAIN RESOURCES</h2>
+            <div class="resource-links">
+                <a href="https://github.com/thomasbi1/cyberrunner" target="_blank" class="resource-link">
+                    <span>📦</span>
+                    <span>GitHub Repository</span>
+                </a>
+                <a href="https://cyberrunner.readthedocs.io/en/latest/" target="_blank" class="resource-link">
+                    <span>📚</span>
+                    <span>Documentation</span>
+                </a>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <section class="tutorials-grid">
-            <div class="card tutorial-card">
+    <section class="tutorials-grid">
+        <div class="tutorial-card">
+            <div>
                 <h3>01. HARDWARE SETUP</h3>
                 <p>Learn how to build the physical components of your CyberRunner</p>
-                <a href="https://cyberrunner.readthedocs.io/en/latest/01_hardware_setup/" target="_blank" class="tutorial-link">View Guide →</a>
             </div>
+            <a href="https://cyberrunner.readthedocs.io/en/latest/01_hardware_setup/" target="_blank" class="tutorial-link">View Guide →</a>
+        </div>
 
-            <div class="card tutorial-card">
+        <div class="tutorial-card">
+            <div>
                 <h3>02. RELOAD MECHANISM</h3>
                 <p>Set up the automatic ball reload system</p>
-                <a href="https://cyberrunner.readthedocs.io/en/latest/02_reload/" target="_blank" class="tutorial-link">View Guide →</a>
             </div>
+            <a href="https://cyberrunner.readthedocs.io/en/latest/02_reload/" target="_blank" class="tutorial-link">View Guide →</a>
+        </div>
 
-            <div class="card tutorial-card">
+        <div class="tutorial-card">
+            <div>
                 <h3>03. SOFTWARE INSTALLATION</h3>
                 <p>Install and configure the required software components</p>
-                <a href="https://cyberrunner.readthedocs.io/en/latest/03_installation/" target="_blank" class="tutorial-link">View Guide →</a>
             </div>
+            <a href="https://cyberrunner.readthedocs.io/en/latest/03_installation/" target="_blank" class="tutorial-link">View Guide →</a>
+        </div>
 
-            <div class="card tutorial-card">
+        <div class="tutorial-card">
+            <div>
                 <h3>04. SYSTEM CONFIGURATION</h3>
                 <p>Configure camera, motors, and markers for optimal performance</p>
-                <a href="https://cyberrunner.readthedocs.io/en/latest/04_initial_config/" target="_blank" class="tutorial-link">View Guide →</a>
             </div>
+            <a href="https://cyberrunner.readthedocs.io/en/latest/04_initial_config/" target="_blank" class="tutorial-link">View Guide →</a>
+        </div>
 
-            <div class="card tutorial-card">
+        <div class="tutorial-card">
+            <div>
                 <h3>05. TRAINING</h3>
                 <p>Learn how to train the reinforcement learning algorithm</p>
-                <a href="https://cyberrunner.readthedocs.io/en/latest/05_train/" target="_blank" class="tutorial-link">View Guide →</a>
             </div>
+            <a href="https://cyberrunner.readthedocs.io/en/latest/05_train/" target="_blank" class="tutorial-link">View Guide →</a>
+        </div>
 
-            <div class="card tutorial-card">
+        <div class="tutorial-card">
+            <div>
                 <h3>06. TROUBLESHOOTING</h3>
                 <p>Solutions to common problems and issues</p>
-                <a href="https://cyberrunner.readthedocs.io/en/latest/06_troubleshooting/" target="_blank" class="tutorial-link">View Guide →</a>
             </div>
-        </section>
-    </div>
-</main>
+            <a href="https://cyberrunner.readthedocs.io/en/latest/06_troubleshooting/" target="_blank" class="tutorial-link">View Guide →</a>
+        </div>
+    </section>
+</div>
 {% endblock %} 

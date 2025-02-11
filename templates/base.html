@@ -3,30 +3,43 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>My Django Forum</title>
+  <title>CyberRunner Challenge</title>
+  <link rel="stylesheet" href="{% static 'css/common.css' %}">
   {% block extra_css %}
   {% endblock %}
 </head>
 <body>
+  <div class="maze-background"></div>
+  <div class="moving-ball ball-1"></div>
+  <div class="moving-ball ball-2"></div>
+  <div class="moving-ball ball-3"></div>
+  <div class="moving-ball ball-4"></div>
   <nav>
-    <a href="{% url 'home' %}">Home</a> |
-    <a href="{% url 'tutorials' %}">Tutorials</a> |
-    <a href="{% url 'challenge' %}">Challenge</a> |
-    <a href="{% url 'community' %}">Community</a> |
-    <a href="{% url 'forum:post_list' %}">Forum</a> |
-    {% if user.is_authenticated %}
-      Hello, {{ user.username }}!
-      <form action="{% url 'logout' %}" method="post" style="display:inline;">
-        {% csrf_token %}
-        <button type="submit">Logout</button>
-      </form>
-    {% else %}ś
-      <a href="{% url 'login' %}">Login</a> |
-      <a href="{% url 'register' %}" class="signup-btn">Sign Up</a>
-    {% endif %}
+    <div class="content-container">
+      <div class="nav-wrapper">
+        <a href="{% url 'home' %}" class="nav-logo">CYBER RUNNER</a>
+        <div class="nav-links">
+          <a href="{% url 'home' %}">Home</a>
+          <a href="{% url 'challenge' %}">Challenge</a>
+          <a href="{% url 'tutorials' %}">Tutorials</a>
+          <a href="{% url 'community' %}">Community</a>
+          {% if user.is_authenticated %}
+            Hello, {{ user.username }}!
+            <form action="{% url 'logout' %}" method="post" style="display:inline;">
+              {% csrf_token %}
+              <button type="submit" class="btn">Logout</button>
+            </form>
+          {% else %}
+            <a href="{% url 'login' %}">Login</a>
+            <a href="{% url 'register' %}" class="header-sign-up">2025 SIGN UP</a>
+          {% endif %}
+        </div>
+      </div>
+    </div>
   </nav>
-  <hr>
-  {% block content %}
-  {% endblock %}
+  <main class="content-container">
+    {% block content %}
+    {% endblock %}
+  </main>
 </body>
 </html>

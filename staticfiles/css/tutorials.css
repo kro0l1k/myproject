@@ -1,0 +1,109 @@
+/* Move from templates/styles/tutorials.css */ 
+
+.tutorials-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+    background-color: rgba(26, 26, 26, 0.8);
+    backdrop-filter: blur(10px);
+}
+
+.hero-section {
+    text-align: center;
+    margin: 4rem 0;
+}
+
+.subtitle {
+    color: var(--text-secondary);
+    font-size: 1.2rem;
+    margin-top: 1rem;
+}
+
+.resources-section {
+    margin: 4rem 0;
+}
+
+.primary-resources {
+    text-align: center;
+    background-color: var(--bg-secondary);
+    padding: 2rem;
+    border-radius: 10px;
+    border: 1px solid var(--accent);
+}
+
+.resource-links {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.resource-link {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--text-primary);
+    text-decoration: none;
+    padding: 1rem 2rem;
+    border: 1px solid var(--accent);
+    border-radius: 4px;
+    transition: all 0.2s;
+    background-color: rgba(42, 42, 42, 0.5);
+}
+
+.resource-link:hover {
+    background: rgba(255, 255, 255, 0.1);
+    transform: translateY(-2px);
+}
+
+.tutorials-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin: 4rem 0;
+}
+
+.tutorial-card {
+    background-color: var(--bg-secondary);
+    border: 1px solid var(--accent);
+    padding: 2rem;
+    border-radius: 10px;
+    transition: transform 0.2s;
+}
+
+.tutorial-card:hover {
+    transform: translateY(-5px);
+}
+
+.tutorial-card h3 {
+    color: var(--text-primary);
+    margin-bottom: 1rem;
+}
+
+.tutorial-card p {
+    color: var(--text-secondary);
+    margin-bottom: 1.5rem;
+}
+
+.tutorial-link {
+    color: var(--text-primary);
+    text-decoration: none;
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    background-color: var(--accent);
+    border-radius: 4px;
+    transition: all 0.2s;
+}
+
+.tutorial-link:hover {
+    background-color: #3a3a3a;
+    transform: translateY(-2px);
+}
+
+.icon {
+    font-size: 1.5rem;
+}
+
+h1, h2, h3, h4 {
+    color: var(--text-primary);
+} 
